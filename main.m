@@ -1,17 +1,18 @@
 clear all;
-mu = 0.8;
+mu = 0.9;
 N=80;
 %M=floor(mu*N/2);
 M=30;
 r = linspace(-pi/2,pi/2,M);
 theta = (0:N-1)/N * 2 * pi;
 m = abs(randn(M,N));
-%m(10:20,1:end)=1;
+m(11:20,40:50)=5;
+m(1:10,30:40)=5;
 m_next = m;
 I = 1.0;
 IE = @(x) cos(x);
-J1=50;
-J0=-50;
+J1=6;
+J0=-10;
 W = @(t1,r1,t2,r2) J1/2*(cos(t1-t2-mu*(r1-r2)) + cos(t1-t2+mu*(r1-r2)))+J0;
 [R,THETA] = ndgrid(r,theta);
 theta_A = mod(THETA-mu*R,2*pi);
@@ -27,7 +28,7 @@ filename = 'moving_single_ring_stop.gif';
 show_original_frame = false;
 num = numel(m);
 shuf = randperm(num);
-for t=0:dt:100
+for t=0:dt:20
     t
     min(min(m))
     max(max(m))
@@ -35,7 +36,7 @@ for t=0:dt:100
     %if ~show_original_frame
         figure(1);
         imshow(m,[],'Colormap',jet,'InitialMagnification',300);
-        axis image manual
+        axis image manual xy
         axis off
     %else
         figure(2);
