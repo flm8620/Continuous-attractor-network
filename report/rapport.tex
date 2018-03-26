@@ -139,7 +139,26 @@
 		\caption{Three types of attractor. Each row shows one attractor in two different coordinates, $\Theta\times R$ and $\Theta_A\times\Theta_B$}
 		\label{fig:type}
 	\end{figure}
+
+	\section{Turning curves}
+	The author then tried a non-uniform external input $I$ to see the behavior of network. The input chosen by author is 
+	\begin{equation}
+	I'(t) := I + \varepsilon I_E(\theta_A-\Psi(t)),\quad I_E(x) := cos(x)
+	\end{equation}
+	which is a bump signal in the map $\Theta_A$. 
 	
+	This signal let the network have a bump in its activity according to the position of signal $\Psi(t)$. 
+	
+	If the signal $\Psi(t)=\Psi$ is constant over time, and if the parameter of network belongs to Single ring or Double ring, then the position of bump in network's activity will be the same in both $\Theta_A$ and $\Theta_B$, equal to $\Psi$. While if the network belongs to Cylinder type, we can only say the average of bump in $\Theta_A$ and $\Theta_B$ equals to $\Psi$.
+	
+	What's interesting is when the signal $\Psi(t)=vt$ rotates in $\Theta_A$, for the network of type Cylinder, the position of bump will depend not only on the current position of signal $\Psi(t)$, but also the direction of rotation ($v>0$ or $v<0$). As shown in Fig \ref{fig:moving}, the Cylinder attractor will follow the external signal until it hits the wall (absence of neurons), and continue gliding along the wall.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=12cm]{moving.png}
+		\caption{Path of bump in activity when input a rotating signal in $\Theta_A$ (horizontal axis). Only Cylinder attractor will behave differently according to the direction of rotation.}
+		\label{fig:moving}
+	\end{figure}
 
 	\section{Morph sequence}
 	The first part of paper discuss only about the case of two maps.
