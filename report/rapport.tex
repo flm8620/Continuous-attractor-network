@@ -151,17 +151,39 @@
 	
 	If the signal $\Psi(t)=\Psi$ is constant over time, and if the parameter of network belongs to Single ring or Double ring, then the position of bump in network's activity will be the same in both $\Theta_A$ and $\Theta_B$, equal to $\Psi$. While if the network belongs to Cylinder type, we can only say the average of bump in $\Theta_A$ and $\Theta_B$ equals to $\Psi$.
 	
-	What's interesting is when the signal $\Psi(t)=vt$ rotates in $\Theta_A$, for the network of type Cylinder, the position of bump will depend not only on the current position of signal $\Psi(t)$, but also the direction of rotation ($v>0$ or $v<0$). As shown in Fig \ref{fig:moving}, the Cylinder attractor will follow the external signal until it hits the wall (absence of neurons), and continue gliding along the wall.
+	What's interesting is when the signal $\Psi(t)=vt$ rotates in $\Theta_A$, for the network of type Cylinder, the position of bump will depend not only on the current position of signal $\Psi(t)$, but also the direction of rotation ($v>0$ or $v<0$). As shown in Fig \ref{fig:moving}, the Cylinder attractor will follow the external signal until it hits the wall (absence of neurons), and continue gliding along the wall. And author interpret this as some kind of memory ability of the network.
 	
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=12cm]{moving.png}
-		\caption{Path of bump in activity when input a rotating signal in $\Theta_A$ (horizontal axis). Only Cylinder attractor will behave differently according to the direction of rotation.}
+		\caption{Path of bump in activity when input a rotating signal in $\Theta_A$ (horizontal axis). Only Cylinder attractor will behave differently according to the direction of rotation. (Path in orange and green)}
 		\label{fig:moving}
 	\end{figure}
 
 	\section{Morph sequence}
-	The first part of paper discuss only about the case of two maps.
+	The first part of paper discuss only about the case of two maps. Then author talks about morph sequence, which is a limit of infinite maps. Before understanding morph sequence, I felt confused of the relation between neurons and maps until I figured out these two equivalent descriptions. I think it's better to clarify these two description from my point of view to ease the comprehension.
+	
+	The first description is to think that the existence of neurons is independent from maps. Or more precisely, for a continuous attractor network, neurons live in a space that occupy a set of unit measure. Then we put these neurons in different maps. Each neuron has its appearances in all maps. And in each map, all neurons occupy different location with a density like a probability distribution whose measure is also one. So for each neuron, we can track its appearances in all maps. And for the connection strength between two neurons, the author makes it equals to the averaged connection strength in all maps between locations occupied by two neurons. Just as shown in Fig \ref{fig:morph} and Fig \ref{fig:morph_more}.
+	\begin{figure}[h]
+	\centering
+	\includegraphics[width=8cm]{morph.png}
+	\caption{Each neuron appears in both maps. Weight between neurons is the sum of weight in all maps}
+	\label{fig:morph}
+	\end{figure}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=8cm]{morph_more.png}
+		\caption{Each neuron appears in all maps. Weight between neurons is the sum of weight in all maps.}
+		\label{fig:morph_more}
+	\end{figure}
+	
+	
+	The second description is to put neurons directly in the space formed by the Cartesian product of all maps. The density of neurons is described by a probability distribution over this space. Each neuron only appears one time at one location in this space. And there isn't any independent existence of neuron without this space. The connection strength between two neurons is defined by one function that takes two location in this space as variables.
+	
+	Someone may find it redundant to use two equivalent descriptions. But I think it's useful to switch between these two descriptions when needed. When the author introduce infinite morph sequence of maps, it's easier to use the first description by imagining adding a new map at a time. While the second method is suitable for mathematical formula, for example, the correlation between maps is actually the correlation between two marginal variables following only one probability distribution in only one probability space instead of a series of them.
+	
+	I'm still not fully understand the motivation of studying the morph sequence. I guess one idea is that, animal brain has a fixed structure of neurons and they can handle different task in different environment. Using the first description, the existence of neurons is independent. And they can store different maps (or connection modes). In each environment the brain will activate the correspondent map. And external signals given in this environment applied also on the very map, but there will be other activities in other maps, as shown by previous result.
 \bibliographystyle{unsrt}
 \bibliography{sample}
 \end{document}
